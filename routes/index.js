@@ -20,7 +20,7 @@ var heroes = [
     name: 'Seguridad y Protección de Sistemas Informáticos',
     facts: [
       'Todos los apuntes estan en SWAD', 
-      'El profesor de la asignatura es Sevilla']
+      'El profesor de la asignatura es Martínez Sevilla']
   }
 ];
 

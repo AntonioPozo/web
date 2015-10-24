@@ -50,7 +50,7 @@ exports.addFact = function(req, res) {
   else{
   	hero.facts.push(req.body.fact);
 	console.log('Nuevo comentario en ' + hero.name + ': ' + req.body.fact); 
- }
+  }
   
   
   res.json({status: 'ok' });
