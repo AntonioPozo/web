@@ -28,7 +28,27 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/hero/:name', routes.hero);
-app.post('/hero/add-fact', routes.addFact);
+
+/*
+var assert = require("assert")
+app.post('/hero/add-fact', function(){
+	routes.addFact;
+	var campo = routes.addFact;
+	//assert(campo, "comentario");
+	console.log(campo);
+	if(campo==null){
+		console.log("comentario nulo!");	
+	}
+	else{
+		console.log("comentario creado correctamente");
+	}
+	
+});
+*/
+app.post('/hero/add-fact',routes.addFact);
+
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

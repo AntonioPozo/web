@@ -3,27 +3,24 @@ var _ = require('underscore');
 // TODO: This shoul be read from a database
 var heroes = [
   { 
-    name: 'Chuck Norris', 
+    name: 'Infraestructura Virtual', 
     facts: [
-      'No existe la teoría de la evolución, tan sólo una lista de las' +
-      ' especies que Chuck Norris permite vivir. ', 
-      'Chuck Norris no te pisa un pie, sino el cuello.',
-      'Chuck Norris borró la papelera de reciclaje.'] 
+      'Todos los apuntes estan en github',
+      'El profesor de teoría es JJ', 
+      'El profesor de prácticas es Fnaveros'] 
   },
   {
-    name: 'Bruce Scheneier',
+    name: 'Desarrollo de Aplicaciones para Internet',
     facts: [
-      'Science is defined as mankinds futile attempt at learning ' +
-      'Bruce Schneiers private key.', 
-      'Others test numbers to see whether they are prime. Bruce ' +
-      'decides whether a number is prime.']
+      'Todos los apuntes estan en SWAD',
+      'El profesor de teoría es Sergio', 
+      'El profesor de prácticas es Guirao']
   },
   {
-    name: 'Arturo Pérez-Reverte',
+    name: 'Seguridad y Protección de Sistemas Informáticos',
     facts: [
-      'Pérez-Reverte se baja música en casa de Ramoncín.', 
-      'Pérez-Reverte no necesita investigar para escribir novela ' +
-      'histórica, el pasado cambia conforme teclea en la máquina.']
+      'Todos los apuntes estan en SWAD', 
+      'El profesor de la asignatura es Sevilla']
   }
 ];
 
@@ -40,14 +37,21 @@ exports.hero = function(req, res) {
   res.json(facts);
 }
 
+
 exports.addFact = function(req, res) {
   var hero = _(heroes).detect(function(p) {
     return p.name == req.body.name;
   });
+  if(req.body.fact==''){
+	console.log('comentario nulo');
+	var assert = require("assert");
+	assert(req.body.fact,"COMENTARIO NULO")
+  }
+  else{
+  	hero.facts.push(req.body.fact);
+	console.log('Nuevo comentario en ' + hero.name + ': ' + req.body.fact); 
+  }
   
-  hero.facts.push(req.body.fact);
-  
-  console.log('New fact for ' + hero.name + ': ' + req.body.fact);
   
   res.json({status: 'ok' });
 }
